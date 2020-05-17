@@ -1,0 +1,21 @@
+language: c
+
+services:
+  - docker
+
+# see https://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure
+sudo: false
+
+install:
+  - make
+
+script:
+  - make build
+
+
+deploy:
+  provider: script
+  script: make deploy
+  on:
+    branch: master
+
