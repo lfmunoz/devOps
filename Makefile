@@ -9,10 +9,14 @@ default:
 # ________________________________________________________________________________
 # DEPLOY
 # ________________________________________________________________________________
-build: bertha-build alpine-build
+#build: bertha-build alpine-build
+build: 
+	echo "build disabled"
 
 deploy:
-	docker push lfmunoz4/bertha:${BERTHA_VERSION}
+	echo "deploy disabled"
+	#docker push lfmunoz4/bertha:${BERTHA_VERSION}
+	#docker push lfmunoz4/alpine:${ALPINE_VERSION}
 
 # ________________________________________________________________________________
 # BERTHA
