@@ -10,10 +10,10 @@ default:
 # DEPLOY
 # ________________________________________________________________________________
 build: bertha-build alpine-build
-	echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+	echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USERNAME}" --password-stdin
 
 deploy:
-	docker push lfmunoz/bertha:${BERTHA_VERSION}O
+	docker push lfmunoz/bertha:${BERTHA_VERSION}
 
 # ________________________________________________________________________________
 # BERTHA

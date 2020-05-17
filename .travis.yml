@@ -19,3 +19,5 @@ deploy:
   on:
     branch: master
 
+
+branch: master
