@@ -1,13 +1,13 @@
 
 
-# FoundationDb
+# FoundationDb Image
 
 
 Reference: https://apple.github.io/foundationdb/index.html
 
 Dockerfile based on: https://github.com/apple/foundationdb/blob/master/packaging/docker/Dockerfile
 
-Image Size: 298MB
+Image Size: 328MB
 
 FoundationDB Requirements: 
 * 4GiB RAM per FoundationDB server process
@@ -17,11 +17,13 @@ WARNING: The default docker bridge network has automatic DNS resolution disabled
 In other words "ping containerName" or "dig containerName" will not work when using the default bridge network
 
 
-Data location: /var/lib/foundationdb/data/$ID
-Logs location: /var/log/foundationdb
-Config location: /etc/foundationdb/foundationdb.conf
-Cluster file location: /etc/foundationdb/fdb.cluster
+* Data location: /var/lib/foundationdb/data/$ID
+* Logs location: /var/log/foundationdb
+* Config location: /etc/foundationdb/foundationdb.conf
+* Cluster file location: /etc/foundationdb/fdb.cluster
 
+
+### Cluster File
 
 The difficulty in dockerizing FoundationDB is the cluster file:
 
@@ -34,12 +36,7 @@ description:ID@IP:PORT,IP:PORT,..
 This means you must know the public IP of all the machines in the cluster before starting any of the docker images
 
 
-## Details
-
-
-/etc/foundationdb/foundationdb.conf  should have a [fdbserver.<ID>]  sections for each core.
-
-4GiB ECC RAM are required per FoundationDB server process
+### Other Details
 
 The fdbserver server process is run and monitored on each server by the fdbmonitor daemon.
 fdbmonitor and fdbserver itself are controlled by the foundationdb.conf file located at:
@@ -48,9 +45,14 @@ fdbmonitor and fdbserver itself are controlled by the foundationdb.conf file loc
 Whenever the foundationdb.conf file changes, the fdbmonitor daemon automatically detects the changes 
 and starts, stops, or restarts child processes as necessary.
 
-Ext4 filesystems should be mounted with mount options defaults,noatime,discard.
+* Ext4 filesystems should be mounted with mount options defaults,noatime,discard.
+* fdbmonitor doesn’t open any network connections. 
+* Each fdbserver process opens exactly one port
 
-fdbmonitor doesn’t open any network connections. Each fdbserver process opens exactly one port
+
+/etc/foundationdb/foundationdb.conf should have a [fdbserver.<ID>]  sections for each core.
+ and remember 4GiB ECC RAM are required per FoundationDB server process
+
 
 ```
 ## EXAMPLE
@@ -113,7 +115,7 @@ command = /usr/lib/foundationdb/backup_agent/backup_agent
 ```
 
 
-# Application Example  
+# Application Image Example (Python)
 
 Reference: https://github.com/apple/foundationdb/tree/master/packaging/docker/samples/python
 

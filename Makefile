@@ -10,14 +10,14 @@ default:
 # DEPLOY
 # ________________________________________________________________________________
 #build: bertha-build alpine-build fdb-build
-build: fdb-build
+build: 
 	echo "built"
 
 deploy:
 	echo "deploy"
 	#docker push lfmunoz4/bertha:${BERTHA_VERSION}
 	#docker push lfmunoz4/alpine:${ALPINE_VERSION}
-	docker push lfmunoz4/fdb:${FDB_VERSION}
+	#docker push lfmunoz4/fdb:${FDB_VERSION}
 
 # ________________________________________________________________________________
 # FOUNDATIONDB
