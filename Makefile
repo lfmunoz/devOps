@@ -15,7 +15,7 @@ build:
 
 deploy:
 	echo "deploy"
-	#docker push lfmunoz4/bertha:${BERTHA_VERSION}
+	docker push lfmunoz4/bertha:${BERTHA_VERSION}
 	#docker push lfmunoz4/alpine:${ALPINE_VERSION}
 	#docker push lfmunoz4/fdb:${FDB_VERSION}
 
@@ -47,9 +47,9 @@ fdb-stop:
 # ________________________________________________________________________________
 # BERTHA
 # ________________________________________________________________________________
-BERTHA_VERSION=1.0.0
+BERTHA_VERSION=2.0.0
 bertha-build:
-	cd build; docker build -t lfmunoz4/bertha:${BERTHA_VERSION} .
+	cd bertha; docker build -t lfmunoz4/bertha:${BERTHA_VERSION} .
 
 bertha-rm:
 	docker image rm lfmunoz4/bertha:${BERTHA_VERSION}
