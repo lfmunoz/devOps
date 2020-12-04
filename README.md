@@ -1,7 +1,9 @@
 # docker-images
 
 
-[![Build Status](https://travis-ci.org/lfmunoz/docker-images.svg?branch=master)](https://travis-ci.org/lfmunoz/docker-images)
+![](https://github.com/lfmunoz/docker-images/workflows/MASTER_BUILD/badge.svg)
+
+
 
 This repository holds source code for docker images which are published using TravisCI
 

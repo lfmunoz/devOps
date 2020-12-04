@@ -13,7 +13,7 @@ default:
 build: 
 	echo "built"
 
-deploy:
+deploy: bertha-build
 	echo "deploy"
 	docker push lfmunoz4/bertha:${BERTHA_VERSION}
 	#docker push lfmunoz4/alpine:${ALPINE_VERSION}
